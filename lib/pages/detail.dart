@@ -51,23 +51,39 @@ class _DetailPageState extends State<DetailPage>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        height: double.maxFinite,
-        padding: const EdgeInsets.all(20.0),
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            fit: BoxFit.cover,
-            image: AssetImage(
-              'assets/dashboard/dash_board_background.png',
-            ),
+    return Container(
+      height: double.maxFinite,
+      padding: const EdgeInsets.all(20.0),
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          fit: BoxFit.cover,
+          image: AssetImage(
+            'assets/bg/detail.png',
           ),
         ),
-        alignment: Alignment.center,
-        child: Image(
-          image: AssetImage(widget.assetPath),
-          width: MediaQuery.of(context).size.width * 0.7 * animation.value,
-          height: MediaQuery.of(context).size.height * 0.7 * animation.value,
+      ),
+      alignment: Alignment.center,
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        appBar: AppBar(
+          leading: CircleAvatar(
+            child: IconButton(
+              icon: Icon(Icons.arrow_back_ios_outlined),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ),
+          elevation: 0.0,
+          backgroundColor: Colors.transparent,
+        ),
+        body: Center(
+          child: Image(
+            alignment: Alignment.center,
+            image: AssetImage(widget.assetPath),
+            width: MediaQuery.of(context).size.width * 0.7 * animation.value,
+            height: MediaQuery.of(context).size.height * 0.7 * animation.value,
+          ),
         ),
       ),
     );

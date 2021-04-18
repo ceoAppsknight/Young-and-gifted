@@ -34,7 +34,7 @@ class DashboardPage extends StatelessWidget {
           image: DecorationImage(
             fit: BoxFit.cover,
             image: AssetImage(
-              'assets/dashboard/dash_board_background.png',
+              'assets/bg/dash_board_background.png',
             ),
           ),
         ),
@@ -51,14 +51,17 @@ class DashboardPage extends StatelessWidget {
                 MaterialPageRoute(
                   builder: (BuildContext context) => HomePage(
                     id: dashboardItems[index].id,
+                    bgPath: dashboardItems[index].bgPath,
                   ),
                 ),
               );
             },
             child: GridTile(
-              child: Image(
-                image: AssetImage(
-                  dashboardItems[index].assetPath,
+              child: Container(
+                child: Image(
+                  image: AssetImage(
+                    dashboardItems[index].assetPath,
+                  ),
                 ),
               ),
             ),

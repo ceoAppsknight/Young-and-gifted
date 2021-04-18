@@ -14,8 +14,12 @@ import 'detail.dart';
 
 class HomePage extends StatefulWidget {
   final String id;
+  final String bgPath;
 
-  const HomePage({this.id});
+  const HomePage({
+    this.id,
+    this.bgPath,
+  });
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -51,19 +55,32 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        height: double.maxFinite,
-        padding: const EdgeInsets.all(20.0),
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            fit: BoxFit.cover,
-            image: AssetImage(
-              'assets/dashboard/dash_board_background.png',
-            ),
+    return Container(
+      height: double.maxFinite,
+      padding: const EdgeInsets.all(20.0),
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          fit: BoxFit.cover,
+          image: AssetImage(
+            'assets/bg/dash_board_background.png',
           ),
         ),
-        child: GridView.builder(
+      ),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        appBar: AppBar(
+          leading: CircleAvatar(
+            child: IconButton(
+              icon: Icon(Icons.home),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ),
+          elevation: 0.0,
+          backgroundColor: Colors.transparent,
+        ),
+        body: GridView.builder(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             crossAxisSpacing: 20.0,
@@ -86,13 +103,11 @@ class _HomePageState extends State<HomePage> {
                 borderRadius: BorderRadius.circular(40.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.bottomLeft,
-                      end: Alignment.topRight,
-                      colors: [
-                        Colors.blue[300],
-                        Colors.red[300],
-                      ],
+                    image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: AssetImage(
+                        widget.bgPath,
+                      ),
                     ),
                   ),
                   child: Center(
